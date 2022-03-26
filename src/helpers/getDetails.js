@@ -7,7 +7,7 @@ export const getDetail = async (owner, project) => {
       return {
         headers: {
           ...headers,
-          authorization: `Bearer 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`,
+          authorization: `Bearer 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`,
         },
       };
     });
