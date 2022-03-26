@@ -1,0 +1,96 @@
+{
+  repositoryOwner(login: "Jesuuelx") {
+    repositories(first: 10) {
+      edges {
+        node {
+          id
+          name
+          url
+        }
+      }
+    }
+  }
+}
+
+{
+  repository(name: "test-auto-portal", owner: "simealdana") {
+    issues(first: 10) {
+      edges {
+        node {
+          id
+          number
+          title
+          url
+        }
+      }
+    }
+  }
+}
+
+{
+  repository(name: "test-auto-portal", owner: "simealdana") {
+    issues(first: 10) {
+      edges {
+        node {
+          id
+          number
+          title
+          url
+          comments(first: 10) {
+            edges {
+              node {
+                id
+                authorAssociation
+                createdAt
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+{
+  repository(name: "Front-End-Checklist", owner: "thedaviddias") {
+    issues(first: 10) {
+      edges {
+        node {
+          id
+          number
+          title
+          url
+          comments(first: 10) {
+            edges {
+              node {
+                id
+                authorAssociation
+                createdAt
+                url
+                reactions(first: 10, content: THUMBS_UP) {
+                  edges {
+                    node {
+                      id
+                      content
+                      user {
+                        gistComments(first: 10) {
+                          edges {
+                            node {
+                              id
+                              bodyText
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
