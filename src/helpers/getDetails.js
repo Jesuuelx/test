@@ -56,6 +56,7 @@ export const getDetail = async (owner, project) => {
     });
 
     const { repository } = data;
+   
     const issues = repository.issues.edges.map(({ node }) => node);
     /* console.log(issues) */
     const description = issues.map(({ id, number, title, url }) => ({
@@ -64,32 +65,8 @@ export const getDetail = async (owner, project) => {
       title: title,
       url: url,
     }));
-    /* console.log(issues) */
-    const comments = issues.map(({ comments }) => comments.edges).forEach(({data}) => data);
-    console.log(comments)
-
-    let nuevoComentario;
-    for (let i = 0; i < comments.length; i++) {
-      nuevoComentario = comments[i];
-    }
-    console.log(nuevoComentario)
-    const final = nuevoComentario
-      .map(({ node }) => node)
-      .map(({ author, bodyText, createdAt, url }) => ({
-        author: author,
-        bodyText: bodyText,
-        createdAt: createdAt,
-        url: url,
-      }));
-
-    console.log(final);
-
-    return { description, final };
-
-    /* console.log(description) */
-
-    /* const { repositoryOwner } = data;
-  const items = repositoryOwner.repositories.edges.map(({ node }) => node); */
+console.log(description)
+    return description
   } catch {
     throw `No existe Ningun Repositorio con ese nombre ${owner} ni ${project}`;
   }

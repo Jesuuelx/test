@@ -94,3 +94,150 @@
     }
   }
 }
+
+SEGUNDA OPCION PARA COMENTARIOS
+
+{
+  repository(name: "Front-End-Checklist", owner: "thedaviddias") {
+    issues(first: 10) {
+      edges {
+        node {
+          id
+          number
+          title
+          url
+          comments(first: 10) {
+            edges {
+              node {
+                id
+                authorAssociation
+                createdAt
+                url
+                author {
+                  ... on User {
+                    id
+                    email
+                    issueComments(first: 10) {
+                      edges {
+                        node {
+                          authorAssociation
+                          bodyText
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+{
+  repository(name: "Front-End-Checklist", owner: "thedaviddias") {
+    issues(first: 10) {
+      edges {
+        node {
+          id
+          number
+          title
+          url
+          comments(first: 10) {
+            edges {
+              node {
+                id
+                authorAssociation
+                createdAt
+                url
+                reactions(first: 10, content: THUMBS_UP) {
+                  edges {
+                    node {
+                      id
+                      content
+                      user {
+                        gistComments(first: 10) {
+                          edges {
+                            node {
+                              id
+                              bodyText
+                              publishedAt
+                              author {
+                                ... on User {
+                                  id
+                                }
+                                avatarUrl(size: 10)
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+ULTIMA OPCION: 
+
+query MyQuery {
+  repository(name: "Front-End-Checklist", owner: "thedaviddias") {
+    issues(first: 10) {
+      nodes {
+        comments(first: 10) {
+          nodes {
+            bodyText
+            id
+            author {
+              login
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+este fue el usado!!
+query MyQuery {
+  repository(name: "Front-End-Checklist", owner: "thedaviddias") {
+    issue(number: 3) {
+      title
+      comments(first: 10) {
+        nodes {
+          bodyText
+          author {
+            login
+          }
+        }
+      }
+    }
+  }
+}
+
+{
+        repository(name: "Front-End-Checklist", owner: "thedaviddias") {
+          issues(first: 10) {
+            nodes {
+              comments(first: 10) {
+                nodes {
+                  bodyText
+                  id
+                  author {
+                    login
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
